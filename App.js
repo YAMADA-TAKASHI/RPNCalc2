@@ -1,114 +1,89 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React from 'react';
-import {
-  SafeAreaView,
+import React, { Component } from "react";
+import { 
   StyleSheet,
-  ScrollView,
-  View,
   Text,
+  View,
+  Platform,
   StatusBar,
-} from 'react-native';
+} from "react-native";
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+ const STATUSBAR_HEIGHT = Platform.OS == 'ios' ? 20 : StatusBar.currentHeight;
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+ export default class App extends Component {
+   render() {
+    return (
+      <View style={styles.container}>
+        { /* 結果を表示するView*/ }
+        <View style={styles.results}>
+          <View style={styles.resultLine}>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+          <View style={styles.resultLine}>
+          </View>
+          <View style={styles.resultLine}>
+          </View>
+        </View>
+        { /* ボタンを表示するView*/ }
+        <View style={styles.buttons}>
+          <View style={styles.buttonsLine}>
+          </View>
+          <View style={styles.buttonsLine}>
+          </View>
+          <View style={styles.buttonsLine}>
+          </View>
+          <View style={styles.lastButtonLinesContainer}>
+            <View style={styles.twoButtonLines}>
+              <View style={styles.buttonLine}>
+              </View>
+              <View style={styles.buttonLine}>
+              </View>
+            </View>
+            <View style={styles.enterButtonContainer}>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: STATUSBAR_HEIGHT,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  results: {
+    flex: 3,
+    backgroundColor: '#fff',
   },
-  body: {
-    backgroundColor: Colors.white,
+  resultLine: {
+    flex: 1,
+    borderBottomWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  buttons: {
+    flex: 5,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  buttonsLine: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    borderWidth: 1,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+  lastButtonLinesContainer: {
+    flex: 2,
+    flexDirection: 'row',
   },
-  highlight: {
-    fontWeight: '700',
+  twoButtonLines: {
+    flex: 3,
   },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  enterButtonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    borderWidth: 1,
   },
 });
 
-export default App;
